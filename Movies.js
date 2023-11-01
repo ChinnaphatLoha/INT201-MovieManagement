@@ -33,11 +33,14 @@ class Movies {
   }
 
   deleteMovieByTitle(title) {
-    const initialLength = this.movies.length;
+    const initLength = this.movies.length;
+    const delMovie = findMovieByTitle(this.movies, title);
     this.movies = this.movies.filter(
       (movie) => movie.title.toLowerCase() !== title.toLowerCase()
     );
-    return initialLength !== this.movies.length;
+    return initLength !== this.movies.length
+      ? `a movie object ${JSON.stringify(delMovie)} is deleted`
+      : 'no movie deleted';
   }
 }
 
